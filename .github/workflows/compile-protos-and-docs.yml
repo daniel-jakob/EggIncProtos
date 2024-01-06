@@ -69,5 +69,5 @@ jobs:
                   git config --global user.name "GitHub Actions"
                   git add ei/ "docs/v${{ env.CLIENT_VERSION }}/"
                   git commit --amend --no-edit
-                  git pull origin main
+                  git pull --no-rebase origin main
                   git push origin HEAD
