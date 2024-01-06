@@ -1,0 +1,72 @@
+name: Generate Protos and Docs
+
+on:
+    push:
+        paths:
+            - "ei.proto"
+            - ".github/workflows/compile-protos-and-docs.yml"
+
+jobs:
+    generate-protos-and-docs:
+        env:
+            commitmsg: ${{ github.event.head_commit.message }}
+
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v4
+              with:
+                fetch-depth: 0
+                  
+
+            - name: Setup Go
+              uses: actions/setup-go@v2
+              with:
+                  go-version: 1.17
+
+            - name: Install protoc
+              run: |
+                  sudo apt-get update
+                  sudo apt-get install -y protobuf-compiler golang-goprotobuf-dev
+
+            - name: Install protoc-gen-doc
+              run: |
+                  go get -u github.com/pseudomuto/protoc-gen-doc/cmd/protoc-gen-doc
+
+            - name: Generate Protos and Go files
+              run: |
+                  mkdir -p ei/go
+                  cp ei.proto ei/
+                  cp ei.proto ei/go/
+                  echo option go_package = \"github.com/elgranjero/EggUtils/ei\"\; >> ei/go/ei.proto
+                  protoc -I=ei/ --go_out=ei/go/ ei/go/ei.proto
+                  mv ei/go/github.com/elgranjero/EggUtils/ei/ei.pb.go ei/go/
+                  rm -rf ei/go/github.com
+
+            - name: Generate Docs
+              run: |
+                  echo Commit message ${{ env.commitmsg }}
+                  client_version=$(echo ${{ env.commitmsg }} | grep -oP 'ClientVersion:\s*\K\d+')
+                  echo "CLIENT_VERSION=$(echo ${{ env.commitmsg }} | grep -oP 'ClientVersion:\s*\K\d+')" >> $GITHUB_ENV
+                  echo Client version = "${client_version}"
+                  echo Client version = ${{ env.CLIENT_VERSION }}
+                  mkdir -p "docs/v${client_version}"
+                  protoc --doc_out="docs/v${client_version}/" --doc_opt=html,index.html ei/ei.proto
+                  protoc --doc_out="docs/v${client_version}/" --doc_opt=markdown,README.md ei/ei.proto
+                  cd docs/
+                  echo *
+
+            - name: Generate Protos for other languages
+              run: |
+                  for lang in cpp csharp java js objc python ruby; do
+                    mkdir -p ei/$lang
+                    protoc -I=ei/ --${lang}_out=ei/$lang/ ei/ei.proto || :
+                  done
+            - name: Commit Changes
+              run: |
+                  git config --global user.email "actions@github.com"
+                  git config --global user.name "GitHub Actions"
+                  git add ei/ "docs/v${{ env.CLIENT_VERSION }}/"
+                  git commit --amend --no-edit
+                  git push origin HEAD
