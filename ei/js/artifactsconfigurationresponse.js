@@ -2,14 +2,11 @@
 /**
  * @fileoverview
  * @enhanceable
- * @suppress {missingRequire} reports error on implicit type usages.
  * @suppress {messageConventions} JS Compiler reports an error if a variable or
  *     field starts with 'MSG_' and isn't a translatable message.
  * @public
  */
 // GENERATED CODE -- DO NOT EDIT!
-/* eslint-disable */
-// @ts-nocheck
 
 goog.provide('proto.ei.ArtifactsConfigurationResponse');
 goog.provide('proto.ei.ArtifactsConfigurationResponse.ArtifactParameters');
@@ -371,10 +368,8 @@ proto.ei.ArtifactsConfigurationResponse.MissionParameters.deserializeBinaryFromR
       msg.addDurations(value);
       break;
     case 4:
-      var values = /** @type {!Array<number>} */ (reader.isDelimited() ? reader.readPackedUint32() : [reader.readUint32()]);
-      for (var i = 0; i < values.length; i++) {
-        msg.addLevelMissionRequirements(values[i]);
-      }
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.addLevelMissionRequirements(value);
       break;
     case 2:
       var value = /** @type {number} */ (reader.readUint32());

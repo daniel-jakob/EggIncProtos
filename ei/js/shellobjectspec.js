@@ -2,14 +2,11 @@
 /**
  * @fileoverview
  * @enhanceable
- * @suppress {missingRequire} reports error on implicit type usages.
  * @suppress {messageConventions} JS Compiler reports an error if a variable or
  *     field starts with 'MSG_' and isn't a translatable message.
  * @public
  */
 // GENERATED CODE -- DO NOT EDIT!
-/* eslint-disable */
-// @ts-nocheck
 
 goog.provide('proto.ei.ShellObjectSpec');
 goog.provide('proto.ei.ShellObjectSpec.ChickenAnimation');
@@ -211,10 +208,8 @@ proto.ei.ShellObjectSpec.deserializeBinaryFromReader = function(msg, reader) {
       msg.setPopularity(value);
       break;
     case 7:
-      var values = /** @type {!Array<number>} */ (reader.isDelimited() ? reader.readPackedDouble() : [reader.readDouble()]);
-      for (var i = 0; i < values.length; i++) {
-        msg.addMetadata(values[i]);
-      }
+      var value = /** @type {number} */ (reader.readDouble());
+      msg.addMetadata(value);
       break;
     case 13:
       var value = /** @type {boolean} */ (reader.readBool());

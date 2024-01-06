@@ -2,14 +2,11 @@
 /**
  * @fileoverview
  * @enhanceable
- * @suppress {missingRequire} reports error on implicit type usages.
  * @suppress {messageConventions} JS Compiler reports an error if a variable or
  *     field starts with 'MSG_' and isn't a translatable message.
  * @public
  */
 // GENERATED CODE -- DO NOT EDIT!
-/* eslint-disable */
-// @ts-nocheck
 
 goog.provide('proto.ei.ContractPlayerInfo');
 goog.provide('proto.ei.ContractPlayerInfo.Status');
@@ -165,10 +162,8 @@ proto.ei.ContractPlayerInfo.deserializeBinaryFromReader = function(msg, reader) 
       msg.setGradeProgress(value);
       break;
     case 11:
-      var values = /** @type {!Array<!proto.ei.ContractEvaluation.PoorBehavior>} */ (reader.isDelimited() ? reader.readPackedEnum() : [reader.readEnum()]);
-      for (var i = 0; i < values.length; i++) {
-        msg.addIssues(values[i]);
-      }
+      var value = /** @type {!proto.ei.ContractEvaluation.PoorBehavior} */ (reader.readEnum());
+      msg.addIssues(value);
       break;
     case 14:
       var value = /** @type {number} */ (reader.readDouble());

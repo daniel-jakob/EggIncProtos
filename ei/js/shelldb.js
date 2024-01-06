@@ -2,14 +2,11 @@
 /**
  * @fileoverview
  * @enhanceable
- * @suppress {missingRequire} reports error on implicit type usages.
  * @suppress {messageConventions} JS Compiler reports an error if a variable or
  *     field starts with 'MSG_' and isn't a translatable message.
  * @public
  */
 // GENERATED CODE -- DO NOT EDIT!
-/* eslint-disable */
-// @ts-nocheck
 
 goog.provide('proto.ei.ShellDB');
 goog.provide('proto.ei.ShellDB.ChickenConfig');
@@ -1216,10 +1213,8 @@ proto.ei.ShellDB.FarmConfiguration.deserializeBinaryFromReader = function(msg, r
     var field = reader.getFieldNumber();
     switch (field) {
     case 10:
-      var values = /** @type {!Array<!proto.ei.ShellDB.FarmElement>} */ (reader.isDelimited() ? reader.readPackedEnum() : [reader.readEnum()]);
-      for (var i = 0; i < values.length; i++) {
-        msg.addLockedElements(values[i]);
-      }
+      var value = /** @type {!proto.ei.ShellDB.FarmElement} */ (reader.readEnum());
+      msg.addLockedElements(value);
       break;
     case 1:
       var value = new proto.ei.ShellDB.ShellConfiguration;

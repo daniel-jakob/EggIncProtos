@@ -2,14 +2,11 @@
 /**
  * @fileoverview
  * @enhanceable
- * @suppress {missingRequire} reports error on implicit type usages.
  * @suppress {messageConventions} JS Compiler reports an error if a variable or
  *     field starts with 'MSG_' and isn't a translatable message.
  * @public
  */
 // GENERATED CODE -- DO NOT EDIT!
-/* eslint-disable */
-// @ts-nocheck
 
 goog.provide('proto.ei.Backup');
 goog.provide('proto.ei.Backup.AchievementInfo');
@@ -2598,10 +2595,8 @@ proto.ei.Backup.Tutorial.deserializeBinaryFromReader = function(msg, reader) {
       msg.setSwitchFarmShown(value);
       break;
     case 11:
-      var values = /** @type {!Array<boolean>} */ (reader.isDelimited() ? reader.readPackedBool() : [reader.readBool()]);
-      for (var i = 0; i < values.length; i++) {
-        msg.addTutorialShown(values[i]);
-      }
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.addTutorialShown(value);
       break;
     default:
       reader.skipField();
@@ -3203,16 +3198,12 @@ proto.ei.Backup.Stats.deserializeBinaryFromReader = function(msg, reader) {
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var values = /** @type {!Array<number>} */ (reader.isDelimited() ? reader.readPackedUint64() : [reader.readUint64()]);
-      for (var i = 0; i < values.length; i++) {
-        msg.addEggTotalsOld(values[i]);
-      }
+      var value = /** @type {number} */ (reader.readUint64());
+      msg.addEggTotalsOld(value);
       break;
     case 8:
-      var values = /** @type {!Array<number>} */ (reader.isDelimited() ? reader.readPackedDouble() : [reader.readDouble()]);
-      for (var i = 0; i < values.length; i++) {
-        msg.addEggTotals(values[i]);
-      }
+      var value = /** @type {number} */ (reader.readDouble());
+      msg.addEggTotals(value);
       break;
     case 7:
       var value = /** @type {number} */ (reader.readUint64());
@@ -4328,16 +4319,12 @@ proto.ei.Backup.Game.deserializeBinaryFromReader = function(msg, reader) {
       msg.addAchievements(value);
       break;
     case 18:
-      var values = /** @type {!Array<number>} */ (reader.isDelimited() ? reader.readPackedUint64() : [reader.readUint64()]);
-      for (var i = 0; i < values.length; i++) {
-        msg.addMaxFarmSizeReached(values[i]);
-      }
+      var value = /** @type {number} */ (reader.readUint64());
+      msg.addMaxFarmSizeReached(value);
       break;
     case 19:
-      var values = /** @type {!Array<number>} */ (reader.isDelimited() ? reader.readPackedUint32() : [reader.readUint32()]);
-      for (var i = 0; i < values.length; i++) {
-        msg.addEggMedalLevel(values[i]);
-      }
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.addEggMedalLevel(value);
       break;
     case 25:
       var value = /** @type {boolean} */ (reader.readBool());
@@ -6227,16 +6214,12 @@ proto.ei.Backup.Artifacts.deserializeBinaryFromReader = function(msg, reader) {
       msg.setTankLevel(value);
       break;
     case 16:
-      var values = /** @type {!Array<number>} */ (reader.isDelimited() ? reader.readPackedDouble() : [reader.readDouble()]);
-      for (var i = 0; i < values.length; i++) {
-        msg.addTankFuels(values[i]);
-      }
+      var value = /** @type {number} */ (reader.readDouble());
+      msg.addTankFuels(value);
       break;
     case 18:
-      var values = /** @type {!Array<number>} */ (reader.isDelimited() ? reader.readPackedDouble() : [reader.readDouble()]);
-      for (var i = 0; i < values.length; i++) {
-        msg.addTankLimits(values[i]);
-      }
+      var value = /** @type {number} */ (reader.readDouble());
+      msg.addTankLimits(value);
       break;
     case 9:
       var value = /** @type {!proto.ei.MissionInfo.Spaceship} */ (reader.readEnum());
@@ -7161,10 +7144,8 @@ proto.ei.Backup.Shells.deserializeBinaryFromReader = function(msg, reader) {
       msg.setContractsIntroAlert(value);
       break;
     case 3:
-      var values = /** @type {!Array<number>} */ (reader.isDelimited() ? reader.readPackedInt32() : [reader.readInt32()]);
-      for (var i = 0; i < values.length; i++) {
-        msg.addNumNew(values[i]);
-      }
+      var value = /** @type {number} */ (reader.readInt32());
+      msg.addNumNew(value);
       break;
     default:
       reader.skipField();
@@ -7493,44 +7474,32 @@ proto.ei.Backup.Simulation.deserializeBinaryFromReader = function(msg, reader) {
       msg.setSilosOwned(value);
       break;
     case 12:
-      var values = /** @type {!Array<number>} */ (reader.isDelimited() ? reader.readPackedUint32() : [reader.readUint32()]);
-      for (var i = 0; i < values.length; i++) {
-        msg.addHabs(values[i]);
-      }
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.addHabs(value);
       break;
     case 13:
-      var values = /** @type {!Array<number>} */ (reader.isDelimited() ? reader.readPackedUint64() : [reader.readUint64()]);
-      for (var i = 0; i < values.length; i++) {
-        msg.addHabPopulation(values[i]);
-      }
+      var value = /** @type {number} */ (reader.readUint64());
+      msg.addHabPopulation(value);
       break;
     case 14:
-      var values = /** @type {!Array<number>} */ (reader.isDelimited() ? reader.readPackedUint64() : [reader.readUint64()]);
-      for (var i = 0; i < values.length; i++) {
-        msg.addHabPopulationIndound(values[i]);
-      }
+      var value = /** @type {number} */ (reader.readUint64());
+      msg.addHabPopulationIndound(value);
       break;
     case 15:
-      var values = /** @type {!Array<number>} */ (reader.isDelimited() ? reader.readPackedDouble() : [reader.readDouble()]);
-      for (var i = 0; i < values.length; i++) {
-        msg.addHabIncubatorPopuplation(values[i]);
-      }
+      var value = /** @type {number} */ (reader.readDouble());
+      msg.addHabIncubatorPopuplation(value);
       break;
     case 16:
       var value = /** @type {number} */ (reader.readDouble());
       msg.setHatcheryPopulation(value);
       break;
     case 17:
-      var values = /** @type {!Array<number>} */ (reader.isDelimited() ? reader.readPackedUint32() : [reader.readUint32()]);
-      for (var i = 0; i < values.length; i++) {
-        msg.addVehicles(values[i]);
-      }
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.addVehicles(value);
       break;
     case 21:
-      var values = /** @type {!Array<number>} */ (reader.isDelimited() ? reader.readPackedUint32() : [reader.readUint32()]);
-      for (var i = 0; i < values.length; i++) {
-        msg.addTrainLength(values[i]);
-      }
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.addTrainLength(value);
       break;
     case 18:
       var value = new proto.ei.Backup.ResearchItem;
@@ -16277,10 +16246,8 @@ proto.ei.PlayerFarmInfo.deserializeBinaryFromReader = function(msg, reader) {
       msg.setHyperloopStation(value);
       break;
     case 5:
-      var values = /** @type {!Array<number>} */ (reader.isDelimited() ? reader.readPackedUint32() : [reader.readUint32()]);
-      for (var i = 0; i < values.length; i++) {
-        msg.addEggMedalLevel(values[i]);
-      }
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.addEggMedalLevel(value);
       break;
     case 6:
       var value = new proto.ei.Backup.ResearchItem;
@@ -16296,34 +16263,24 @@ proto.ei.PlayerFarmInfo.deserializeBinaryFromReader = function(msg, reader) {
       msg.setCashOnHand(value);
       break;
     case 9:
-      var values = /** @type {!Array<number>} */ (reader.isDelimited() ? reader.readPackedUint32() : [reader.readUint32()]);
-      for (var i = 0; i < values.length; i++) {
-        msg.addHabs(values[i]);
-      }
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.addHabs(value);
       break;
     case 10:
-      var values = /** @type {!Array<number>} */ (reader.isDelimited() ? reader.readPackedUint64() : [reader.readUint64()]);
-      for (var i = 0; i < values.length; i++) {
-        msg.addHabPopulation(values[i]);
-      }
+      var value = /** @type {number} */ (reader.readUint64());
+      msg.addHabPopulation(value);
       break;
     case 21:
-      var values = /** @type {!Array<number>} */ (reader.isDelimited() ? reader.readPackedUint64() : [reader.readUint64()]);
-      for (var i = 0; i < values.length; i++) {
-        msg.addHabCapacity(values[i]);
-      }
+      var value = /** @type {number} */ (reader.readUint64());
+      msg.addHabCapacity(value);
       break;
     case 11:
-      var values = /** @type {!Array<number>} */ (reader.isDelimited() ? reader.readPackedUint32() : [reader.readUint32()]);
-      for (var i = 0; i < values.length; i++) {
-        msg.addVehicles(values[i]);
-      }
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.addVehicles(value);
       break;
     case 12:
-      var values = /** @type {!Array<number>} */ (reader.isDelimited() ? reader.readPackedUint32() : [reader.readUint32()]);
-      for (var i = 0; i < values.length; i++) {
-        msg.addTrainLength(values[i]);
-      }
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.addTrainLength(value);
       break;
     case 13:
       var value = /** @type {number} */ (reader.readUint32());
