@@ -70,4 +70,4 @@ jobs:
                   git add ei/ "docs/v${{ env.CLIENT_VERSION }}/"
                   git commit --amend --no-edit
                   git pull --no-rebase origin main
-                  git push origin HEAD
+                  git push --force origin HEAD
