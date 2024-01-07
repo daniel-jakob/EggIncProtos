@@ -70,6 +70,7 @@ jobs:
                   git push --force origin HEAD
                   
     build-and-deploy:
+        needs: generate-protos-and-docs
         concurrency: ci-${{ github.ref }} # Recommended if you intend to make multiple deployments in quick succession.
         runs-on: ubuntu-latest
         steps:
