@@ -5,6 +5,8 @@ on:
         paths:
             - "ei.proto"
             - ".github/workflows/compile-protos-and-docs.yml"
+permissions:
+    contents: write
 
 jobs:
     generate-protos-and-docs:
@@ -49,13 +51,9 @@ jobs:
                   echo Commit message ${{ env.commitmsg }}
                   client_version=$(echo ${{ env.commitmsg }} | grep -oP 'ClientVersion:\s*\K\d+')
                   echo "CLIENT_VERSION=$(echo ${{ env.commitmsg }} | grep -oP 'ClientVersion:\s*\K\d+')" >> $GITHUB_ENV
-                  echo Client version = "${client_version}"
-                  echo Client version = ${{ env.CLIENT_VERSION }}
                   mkdir -p "docs/v${client_version}"
                   protoc --doc_out="docs/v${client_version}/" --doc_opt=html,index.html ei/ei.proto
                   protoc --doc_out="docs/v${client_version}/" --doc_opt=markdown,README.md ei/ei.proto
-                  cd docs/
-                  echo *
 
             - name: Generate Protos for other languages
               run: |
@@ -69,5 +67,16 @@ jobs:
                   git config --global user.name "GitHub Actions"
                   git add ei/ "docs/v${{ env.CLIENT_VERSION }}/"
                   git commit --amend --no-edit
-                  git pull --no-rebase origin main
                   git push --force origin HEAD
+                  
+    build-and-deploy:
+        concurrency: ci-${{ github.ref }} # Recommended if you intend to make multiple deployments in quick succession.
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout 🛎️
+              uses: actions/checkout@v4
+
+            - name: Deploy 🚀
+              uses: JamesIves/github-pages-deploy-action@v4
+              with:
+                  folder: docs # The folder the action should deploy.
