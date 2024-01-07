@@ -69,7 +69,7 @@ jobs:
                   git commit --amend --no-edit
                   git push --force origin HEAD
                   
-    build-and-deploy:
+    build-and-deploy: # Essentially copies docs/ folder with newly generated documentaion to gh-pages branch
         needs: generate-protos-and-docs
         concurrency: ci-${{ github.ref }} # Recommended if you intend to make multiple deployments in quick succession.
         runs-on: ubuntu-latest
